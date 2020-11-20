@@ -1,11 +1,11 @@
 using Test
 
-include("activFons.jl")
+include("../activFons.jl")
 using .activFons
 
 
 @testset "Activation functions" begin
-    for activation in ["sigmoid", "relu", "leaky_relu", "None"]
+    for activation in ["id", "sigmoid", "relu", "leaky_relu"]
         @test activFons.check_activation(activation) == true
     end
     @test activFons.check_activation("lalala") == false
