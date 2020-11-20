@@ -1,7 +1,8 @@
 using Test
 
-include("errorJl.jl")
+include("../errorJl.jl")
 using .errorJl: ErrorJl
 
-
-@test_throws ErrorJl throw(ErrorJl("Test error message"))
+@testset "Error" begin
+    @test_throws ErrorJl throw(ErrorJl("Test error message"))
+end

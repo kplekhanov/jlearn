@@ -1,7 +1,7 @@
 module activFons
 
 
-activation_list = ["id", "sigmoid", "relu", "leaky_relu", "None"]
+activation_list = ["id", "sigmoid", "relu", "leaky_relu"]
 
 function check_activation(activation)
     return activation in activation_list
@@ -9,6 +9,10 @@ end
 
 function id(z)     
     return z
+end
+
+function id_d(z)     
+    return 1
 end
 
 function sigmoid(z)     
@@ -20,19 +24,19 @@ function sigmoid_d(z)
 end
 
 function relu(z)
-    return (z > 0) * z
+    return Int(z > 0) * z
 end
 
 function relu_d(z)
-    return z > 0
+    return Int(z > 0)
 end
 
 function leaky_relu(z, coef=0.01)
-    return (z > 0) * z + (z < 0) * coef * z
+    return Int(z > 0) * z + Int(z < 0) * coef * z
 end
 
 function leaky_relu_d(z, coef=0.01)
-    return (z > 0) - coef * (z < 0)
+    return Int(z > 0) - coef * Int(z < 0)
 end
 
 
